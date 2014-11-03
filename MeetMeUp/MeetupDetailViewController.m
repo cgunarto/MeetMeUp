@@ -11,8 +11,9 @@
 @interface MeetupDetailViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *eventName;
 @property (weak, nonatomic) IBOutlet UILabel *RSVPCount;
-@property (weak, nonatomic) IBOutlet UITextView *hostingGroupInfo;
-@property (weak, nonatomic) IBOutlet UITextView *eventDescription;
+@property (weak, nonatomic) IBOutlet UILabel *hostingGroupInfo;
+@property (weak, nonatomic) IBOutlet UIWebView *eventDescriptionWebView;
+@property (weak, nonatomic) IBOutlet UIButton *webLink;
 
 
 
@@ -24,23 +25,21 @@
 {
     [super viewDidLoad];
 
+    self.eventName.text = self.meetupDictionary[@"name"];
+
     NSDictionary *dGroupDictionary = self.meetupDictionary[@"group"];
-    self.eventName.text = dGroupDictionary[@"name"];
+    self.hostingGroupInfo.text = [NSString stringWithFormat:@"Hosting group info is %@", dGroupDictionary[@"name"]];
 
     int RSVPYesCount = (int)self.meetupDictionary[@"yes_rsvp_count"];
     self.RSVPCount.text = [NSString stringWithFormat:@"RSVP Count is %d",RSVPYesCount];
 
+    [self.eventDescriptionWebView loadHTMLString:self.meetupDictionary[@"description"] baseURL:nil];
+
+    NSString *urlString = self.meetupDictionary[@"event_url"];
+    [self.webLink setTitle:urlString forState:UIControlStateNormal];
+
 }
 
-//
-//self.resultDictionary = self.allMeetupArray[indexPath.row];
-//
-//NSDictionary *dGroupDictionary = self.resultDictionary[@"group"];
-//cell.textLabel.text = dGroupDictionary[@"name"];
-//
-//NSDictionary *dVenueDictionary = self.resultDictionary[@"venue"];
-//cell.detailTextLabel.text = dVenueDictionary[@"address_1"];
-//
 
 
 

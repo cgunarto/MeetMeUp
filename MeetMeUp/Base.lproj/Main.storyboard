@@ -42,7 +42,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="rnz-oN-aVq" kind="push" id="iW3-qb-tKi"/>
+                                            <segue destination="rnz-oN-aVq" kind="push" identifier="segue1" id="iW3-qb-tKi"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -82,43 +82,90 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Event Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ey7-CC-Div">
-                                <rect key="frame" x="44" y="73" width="240" height="21"/>
+                                <rect key="frame" x="44" y="115" width="240" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="RSVP Count" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w7x-jE-0lp">
-                                <rect key="frame" x="44" y="94" width="196" height="21"/>
+                                <rect key="frame" x="44" y="149" width="196" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Hosting group info" translatesAutoresizingMaskIntoConstraints="NO" id="l0p-QN-wNH">
-                                <rect key="frame" x="44" y="123" width="240" height="128"/>
-                                <color key="backgroundColor" red="1" green="1" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Event description" translatesAutoresizingMaskIntoConstraints="NO" id="M8u-QW-kao">
-                                <rect key="frame" x="44" y="265" width="240" height="128"/>
-                                <color key="backgroundColor" red="1" green="1" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Group Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m1g-pQ-hUJ">
+                                <rect key="frame" x="44" y="183" width="240" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RJg-5v-m50">
+                                <rect key="frame" x="0.0" y="218" width="320" height="236"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MSK-CV-OJS">
+                                <rect key="frame" x="0.0" y="479" width="320" height="30"/>
+                                <state key="normal" title="Weblink">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="i77-7V-bN1" kind="modal" identifier="segue2" id="2bS-82-hj1"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="kD3-hs-uw4"/>
                     <connections>
                         <outlet property="RSVPCount" destination="w7x-jE-0lp" id="QFb-bh-OTj"/>
-                        <outlet property="eventDescription" destination="M8u-QW-kao" id="8CC-gA-y3M"/>
+                        <outlet property="eventDescriptionWebView" destination="RJg-5v-m50" id="xir-Oh-kXd"/>
                         <outlet property="eventName" destination="ey7-CC-Div" id="qyM-4K-acr"/>
-                        <outlet property="hostingGroupInfo" destination="l0p-QN-wNH" id="h3n-0b-UF3"/>
+                        <outlet property="hostingGroupInfo" destination="m1g-pQ-hUJ" id="KIt-OI-WbK"/>
+                        <outlet property="webLink" destination="MSK-CV-OJS" id="070-ci-xDB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hj6-GU-Zxf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1194" y="362"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="eqN-4h-21y">
+            <objects>
+                <viewController id="i77-7V-bN1" customClass="WebViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xZc-fR-cK8"/>
+                        <viewControllerLayoutGuide type="bottom" id="zBj-8x-i5m"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aZ4-Ec-bBs">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2oa-VB-W5R">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="516"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="BIQ-My-ey3">
+                                <rect key="frame" x="150" y="81" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="Gk9-nm-f8i"/>
+                                    <constraint firstAttribute="width" constant="20" id="iu1-aU-feo"/>
+                                </constraints>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="BIQ-My-ey3" secondAttribute="centerX" id="3q7-a1-rpj"/>
+                            <constraint firstItem="BIQ-My-ey3" firstAttribute="top" secondItem="xZc-fR-cK8" secondAttribute="bottom" constant="61" id="Fly-FO-0FS"/>
+                            <constraint firstItem="2oa-VB-W5R" firstAttribute="leading" secondItem="aZ4-Ec-bBs" secondAttribute="leadingMargin" constant="-16" id="PzT-fQ-Cd9"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="2oa-VB-W5R" secondAttribute="trailing" constant="-16" id="qEE-OO-jJx"/>
+                            <constraint firstItem="2oa-VB-W5R" firstAttribute="top" secondItem="aZ4-Ec-bBs" secondAttribute="topMargin" id="rtT-7s-t3x"/>
+                            <constraint firstItem="zBj-8x-i5m" firstAttribute="top" secondItem="2oa-VB-W5R" secondAttribute="bottom" constant="52" id="tkF-Tb-6GW"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HmV-3g-Yto" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1602" y="362"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kCK-AZ-tJi">

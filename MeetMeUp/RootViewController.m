@@ -54,8 +54,8 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     self.resultDictionary = self.allMeetupArray[indexPath.row];
 
-    NSDictionary *dGroupDictionary = self.resultDictionary[@"group"];
-    cell.textLabel.text = dGroupDictionary[@"name"];
+//    NSDictionary *dGroupDictionary = self.resultDictionary[@"group"];
+    cell.textLabel.text = self.resultDictionary[@"name"];
 
     NSDictionary *dVenueDictionary = self.resultDictionary[@"venue"];
     cell.detailTextLabel.text = dVenueDictionary[@"address_1"];
