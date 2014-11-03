@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  MeetupDetailViewController.h
 //  MeetMeUp
 //
 //  Created by CHRISTINA GUNARTO on 11/3/14.
@@ -8,8 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface MeetupDetailViewController : UIViewController
+@property (strong, nonatomic) NSDictionary* meetupDictionary;
 
 @end
-

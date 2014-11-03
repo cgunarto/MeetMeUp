@@ -9,11 +9,12 @@
 /* Begin PBXBuildFile section */
 		4FBF98DC1A08285F008E3B28 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF98DB1A08285F008E3B28 /* main.m */; };
 		4FBF98DF1A08285F008E3B28 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF98DE1A08285F008E3B28 /* AppDelegate.m */; };
-		4FBF98E21A08285F008E3B28 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF98E11A08285F008E3B28 /* ViewController.m */; };
+		4FBF98E21A08285F008E3B28 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF98E11A08285F008E3B28 /* RootViewController.m */; };
 		4FBF98E51A08285F008E3B28 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FBF98E31A08285F008E3B28 /* Main.storyboard */; };
 		4FBF98E71A08285F008E3B28 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FBF98E61A08285F008E3B28 /* Images.xcassets */; };
 		4FBF98EA1A08285F008E3B28 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FBF98E81A08285F008E3B28 /* LaunchScreen.xib */; };
 		4FBF98F61A08285F008E3B28 /* MeetMeUpTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF98F51A08285F008E3B28 /* MeetMeUpTests.m */; };
+		4FBF99011A08325D008E3B28 /* MeetupDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF99001A08325D008E3B28 /* MeetupDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,14 +33,16 @@
 		4FBF98DB1A08285F008E3B28 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4FBF98DD1A08285F008E3B28 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4FBF98DE1A08285F008E3B28 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		4FBF98E01A08285F008E3B28 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		4FBF98E11A08285F008E3B28 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		4FBF98E01A08285F008E3B28 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		4FBF98E11A08285F008E3B28 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		4FBF98E41A08285F008E3B28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4FBF98E61A08285F008E3B28 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4FBF98E91A08285F008E3B28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		4FBF98EF1A08285F008E3B28 /* MeetMeUpTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeetMeUpTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FBF98F41A08285F008E3B28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4FBF98F51A08285F008E3B28 /* MeetMeUpTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeetMeUpTests.m; sourceTree = "<group>"; };
+		4FBF98FF1A08325D008E3B28 /* MeetupDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeetupDetailViewController.h; sourceTree = "<group>"; };
+		4FBF99001A08325D008E3B28 /* MeetupDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeetupDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,8 +86,10 @@
 			children = (
 				4FBF98DD1A08285F008E3B28 /* AppDelegate.h */,
 				4FBF98DE1A08285F008E3B28 /* AppDelegate.m */,
-				4FBF98E01A08285F008E3B28 /* ViewController.h */,
-				4FBF98E11A08285F008E3B28 /* ViewController.m */,
+				4FBF98E01A08285F008E3B28 /* RootViewController.h */,
+				4FBF98E11A08285F008E3B28 /* RootViewController.m */,
+				4FBF98FF1A08325D008E3B28 /* MeetupDetailViewController.h */,
+				4FBF99001A08325D008E3B28 /* MeetupDetailViewController.m */,
 				4FBF98E31A08285F008E3B28 /* Main.storyboard */,
 				4FBF98E61A08285F008E3B28 /* Images.xcassets */,
 				4FBF98E81A08285F008E3B28 /* LaunchScreen.xib */,
@@ -219,7 +224,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4FBF98E21A08285F008E3B28 /* ViewController.m in Sources */,
+				4FBF98E21A08285F008E3B28 /* RootViewController.m in Sources */,
+				4FBF99011A08325D008E3B28 /* MeetupDetailViewController.m in Sources */,
 				4FBF98DF1A08285F008E3B28 /* AppDelegate.m in Sources */,
 				4FBF98DC1A08285F008E3B28 /* main.m in Sources */,
 			);
