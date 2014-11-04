@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="U7L-aU-UO0">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="32" width="320" height="539"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" textLabel="RnA-vF-TXN" detailTextLabel="Mzp-Fz-DIO" style="IBUITableViewCellStyleSubtitle" id="b6m-EC-SWv">
@@ -51,18 +51,33 @@
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="hGM-gT-XN5"/>
                                 </connections>
                             </tableView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Syk-96-9up">
+                                <rect key="frame" x="0.0" y="64" width="320" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="G9W-Gr-7vI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="kLd-Km-rau"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="U7L-aU-UO0" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" id="Dl0-Pb-zmc"/>
-                            <constraint firstItem="U7L-aU-UO0" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="cOI-TA-eNN"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="U7L-aU-UO0" secondAttribute="bottom" id="jG1-0g-KxH"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="U7L-aU-UO0" secondAttribute="trailing" constant="-16" id="u3X-Jw-yB9"/>
+                            <constraint firstItem="U7L-aU-UO0" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="-32" id="4Nq-xu-D4z"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Syk-96-9up" secondAttribute="trailing" constant="-16" id="Dwh-mq-Uej"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="U7L-aU-UO0" secondAttribute="bottom" constant="-3" id="EBW-K3-mix"/>
+                            <constraint firstItem="Syk-96-9up" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="Im8-dw-NGd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="U7L-aU-UO0" secondAttribute="trailing" constant="-16" id="NKG-Hi-fw2"/>
+                            <constraint firstItem="Syk-96-9up" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="XMA-tU-BSd"/>
+                            <constraint firstItem="U7L-aU-UO0" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="ht6-8j-ea2"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="MEETUP " id="dM1-dh-KnD"/>
                     <connections>
                         <outlet property="tableView" destination="U7L-aU-UO0" id="0NX-R1-lxX"/>
+                        <outlet property="textField" destination="Syk-96-9up" id="9Wu-ss-ZPC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
