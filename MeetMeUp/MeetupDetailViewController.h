@@ -10,7 +10,7 @@
 #import "Meetup.h"
 
 @interface MeetupDetailViewController : UIViewController
-@property (strong, nonatomic) NSDictionary* meetupDictionary;//delete this later
+//@property (strong, nonatomic) NSDictionary* meetupDictionary;//delete this later
 @property (strong, nonatomic) Meetup *meetupChosen;
 
 

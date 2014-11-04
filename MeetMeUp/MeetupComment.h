@@ -10,7 +10,7 @@
 
 @interface MeetupComment : NSObject
 
-//@property NSDate *date;
+@property float timestamp;
 //[NSDate dateWithTimeIntervalSince1970:timestamp]
 @property NSString *memberName;
 @property NSString *comment;

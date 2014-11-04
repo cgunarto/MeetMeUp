@@ -13,6 +13,7 @@
 - (instancetype)initWithMeetupDictionary:(NSDictionary *) meetupDictionary
 {
     self = [super init];
+
     self.eventName = meetupDictionary[@"name"];
 
     NSDictionary *dGroupDictionary = meetupDictionary[@"group"];
@@ -33,10 +34,12 @@
 
     self.eventID = meetupDictionary[@"id"];
 
-    self.commentRequestURL = [NSString stringWithFormat:@"https://api.meetup.com/2/event_comments?&sign=true&photo-host=public&group_id=%@&event_id=%@&key=3a101e334041565a185317693668407b",self.groupID, self.eventID];
+    self.commentRequestURL = [NSString stringWithFormat:@"https://api.meetup.com/2/event_comments?&sign=true&photo-host=public&group_id=%@&event_id=%@&key=477d1928246a4e162252547b766d3c6d",self.groupID, self.eventID];
+    
     return self;
     
 }
 
+//my key 3a101e334041565a185317693668407b
 
 @end

@@ -10,7 +10,7 @@
 
 @interface Meetup : NSObject
 
-@property (strong, nonatomic) NSDictionary *meetupDictionary;
+@property (strong, nonatomic) NSDictionary *meetupDictionary; //TODO:make it local
 
 @property (strong, nonatomic) NSString *eventName;
 @property (strong, nonatomic) NSString *groupName;
@@ -18,7 +18,7 @@
 @property (strong, nonatomic) NSString *urlString;
 @property (strong, nonatomic) NSString *eventDescription;
 
-@property (strong, nonatomic) NSDictionary *venueDictionary;
+@property (strong, nonatomic) NSDictionary *venueDictionary; //TODO:make it local
 @property (strong, nonatomic) NSString *streetAddress;
 @property (strong, nonatomic) NSString *city;
 @property (strong, nonatomic) NSString *country;

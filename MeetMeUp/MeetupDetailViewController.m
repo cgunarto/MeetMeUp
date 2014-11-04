@@ -46,9 +46,10 @@
 
 
     [self.eventDescriptionWebView loadHTMLString:self.meetupChosen.eventDescription baseURL:nil];
-    [self loadJSONData: self.meetupChosen.commentRequestURL];
+    
+    [self loadCommentsForURL: self.meetupChosen.commentRequestURL];
 
-
+    //get a dictionary of user information from comment chosen
 }
 
 #pragma mark Table View Delegate Methods
@@ -61,7 +62,19 @@
     cell.userName.text  = comment.memberName;
     [cell.commentWebView loadHTMLString:comment.comment baseURL:nil];
 
-    //NEED TO DEBUG THIS
+    //TODO: fix time stamp
+    float timestampval =  comment.timestamp;
+
+    NSDate *updatetimestamp = [NSDate dateWithTimeIntervalSince1970: timestampval];
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
+
+    [dateFormat setDateFormat:@"yyyy-MM-dd"];
+
+    NSString *dateString = [dateFormat stringFromDate: updatetimestamp];
+
+    cell.timeLabel.text = dateString;
+
+
     NSURL *url = [NSURL URLWithString:comment.memberProfileURL];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
@@ -86,10 +99,11 @@
 
              cell.userImageView.image = [UIImage imageWithData:imageData];
 
-             [self.tableView reloadData];
+             // was calling infite loop
+//             [self.tableView reloadData]
          }
      }];
-    //NEED TO DEBUG THIS ABOVE
+
 
     return cell;
 }
@@ -101,7 +115,7 @@
 
 #pragma mark Custom Methods
 
-- (void)loadJSONData:(NSString *)urlString
+- (void)loadCommentsForURL:(NSString *)urlString
 {
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
@@ -137,7 +151,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"segue2"])
+    if ([segue.identifier isEqualToString:@"segue2"]) //TODO: name it WebviewSegue
     {
         WebViewController *webVC = segue.destinationViewController;
         webVC.meetupChosen = self.meetupChosen;

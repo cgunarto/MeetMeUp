@@ -9,13 +9,11 @@
 #import "RootViewController.h"
 #import "MeetupDetailViewController.h"
 #import "Meetup.h"
-#define kURL @"https://api.meetup.com/2/open_events.json?zip=60604&text=mobile&time=,1w&key=3a101e334041565a185317693668407b"
+#define kURL @"https://api.meetup.com/2/open_events.json?zip=60604&text=mobile&time=,1w&key=477d1928246a4e162252547b766d3c6d"
 
 @interface RootViewController () <UITabBarDelegate, UITableViewDataSource, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSDictionary *allJSONDataDictionary;
 @property (strong, nonatomic) NSDictionary *resultDictionary;
-@property (strong, nonatomic) NSMutableArray *allMeetupDictionaryArray;
 @property (strong, nonatomic) NSMutableArray *allMeetupArray;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 
@@ -47,7 +45,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.allMeetupDictionaryArray.count;
+    return self.allMeetupArray.count;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue1 sender:(id)sender
@@ -88,6 +86,7 @@
 
 - (void)loadJSONData:(NSString *)urlString
 {
+    [self.allMeetupArray removeAllObjects]; //start with a clean slate everytime with this refresh
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
@@ -104,15 +103,20 @@
 
          else
          {
-             self.allJSONDataDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-             self.allMeetupDictionaryArray = self.allJSONDataDictionary[@"results"]; // now allMeetupArray becomes an array of dictionary
+             NSDictionary *allJSONDataDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+             NSArray *allMeetupDictionaryArray = allJSONDataDictionary[@"results"]; // now allMeetupArray becomes an array of dictionary
 
-             for (int i = 0; i < self.allMeetupDictionaryArray.count; i++)
+             for (NSDictionary *d in allMeetupDictionaryArray)
              {
-                 Meetup *meetup = [[Meetup alloc] initWithMeetupDictionary:self.allMeetupDictionaryArray[i]];
-                 [self.allMeetupArray insertObject:meetup atIndex:i];
+                 Meetup *meetup = [[Meetup alloc] initWithMeetupDictionary:d];
+                 [self.allMeetupArray addObject:meetup];
              }
-             
+//             for (int i = 0; i < allMeetupDictionaryArray.count; i++)
+//             {
+//                 Meetup *meetup = [[Meetup alloc] initWithMeetupDictionary:self.allMeetupDictionaryArray[i]];
+//                 [self.allMeetupArray insertObject:meetup atIndex:i];
+//             }
+
              [self.tableView reloadData];
          }
      }];
