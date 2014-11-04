@@ -143,6 +143,9 @@
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2oa-VB-W5R">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="516"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="i77-7V-bN1" id="DcL-mb-hn8"/>
+                                </connections>
                             </webView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="BIQ-My-ey3">
                                 <rect key="frame" x="150" y="81" width="20" height="20"/>
@@ -151,21 +154,73 @@
                                     <constraint firstAttribute="width" constant="20" id="iu1-aU-feo"/>
                                 </constraints>
                             </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UYA-DC-nXX">
+                                <rect key="frame" x="212" y="530" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="YXs-Cf-YB1"/>
+                                    <constraint firstAttribute="width" constant="30" id="e6p-Di-1yS"/>
+                                </constraints>
+                                <state key="normal" title="&lt;">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onWebBackButtonPressed:" destination="i77-7V-bN1" eventType="touchUpInside" id="8xa-N9-aEw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iF3-hu-Fuq">
+                                <rect key="frame" x="250" y="530" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="7hk-pZ-bTM"/>
+                                    <constraint firstAttribute="height" constant="30" id="YU1-m9-iIV"/>
+                                </constraints>
+                                <state key="normal" title=">">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onWebForwardButtonPressed:" destination="i77-7V-bN1" eventType="touchUpInside" id="KSc-pN-Ave"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dRc-N3-E5e">
+                                <rect key="frame" x="31" y="530" width="42" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="42" id="WKr-OF-nXT"/>
+                                    <constraint firstAttribute="height" constant="30" id="Yfp-BO-gwg"/>
+                                </constraints>
+                                <state key="normal" title="BACK">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onBackButtonPressed:" destination="i77-7V-bN1" eventType="touchUpInside" id="8TY-Sh-a8K"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="BIQ-My-ey3" secondAttribute="centerX" id="3q7-a1-rpj"/>
+                            <constraint firstItem="zBj-8x-i5m" firstAttribute="top" secondItem="dRc-N3-E5e" secondAttribute="bottom" constant="8" id="5rI-RS-AM0"/>
+                            <constraint firstItem="dRc-N3-E5e" firstAttribute="leading" secondItem="aZ4-Ec-bBs" secondAttribute="leadingMargin" constant="15" id="62J-Jb-yut"/>
+                            <constraint firstItem="zBj-8x-i5m" firstAttribute="top" secondItem="iF3-hu-Fuq" secondAttribute="bottom" constant="8" id="Dj4-QS-IUa"/>
+                            <constraint firstItem="zBj-8x-i5m" firstAttribute="top" secondItem="UYA-DC-nXX" secondAttribute="bottom" constant="8" id="ESd-cw-lYV"/>
                             <constraint firstItem="BIQ-My-ey3" firstAttribute="top" secondItem="xZc-fR-cK8" secondAttribute="bottom" constant="61" id="Fly-FO-0FS"/>
+                            <constraint firstItem="iF3-hu-Fuq" firstAttribute="leading" secondItem="UYA-DC-nXX" secondAttribute="trailing" constant="8" id="JcO-a0-fG9"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="iF3-hu-Fuq" secondAttribute="trailing" constant="24" id="MFR-Sf-kbV"/>
                             <constraint firstItem="2oa-VB-W5R" firstAttribute="leading" secondItem="aZ4-Ec-bBs" secondAttribute="leadingMargin" constant="-16" id="PzT-fQ-Cd9"/>
+                            <constraint firstItem="iF3-hu-Fuq" firstAttribute="top" secondItem="2oa-VB-W5R" secondAttribute="bottom" constant="14" id="TF9-o6-POw"/>
                             <constraint firstAttribute="trailingMargin" secondItem="2oa-VB-W5R" secondAttribute="trailing" constant="-16" id="qEE-OO-jJx"/>
                             <constraint firstItem="2oa-VB-W5R" firstAttribute="top" secondItem="aZ4-Ec-bBs" secondAttribute="topMargin" id="rtT-7s-t3x"/>
                             <constraint firstItem="zBj-8x-i5m" firstAttribute="top" secondItem="2oa-VB-W5R" secondAttribute="bottom" constant="52" id="tkF-Tb-6GW"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="BIQ-My-ey3" id="S1p-1a-aFr"/>
+                        <outlet property="webBackButton" destination="UYA-DC-nXX" id="5je-rK-PAY"/>
+                        <outlet property="webForwardButton" destination="iF3-hu-Fuq" id="2Fu-MQ-7mT"/>
+                        <outlet property="webView" destination="2oa-VB-W5R" id="h8M-dC-nfX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HmV-3g-Yto" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1602" y="362"/>
+            <point key="canvasLocation" x="1595" y="362"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kCK-AZ-tJi">

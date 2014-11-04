@@ -8,14 +8,16 @@
 
 #import "RootViewController.h"
 #import "MeetupDetailViewController.h"
+#import "Meetup.h"
 #define kURL @"https://api.meetup.com/2/open_events.json?zip=60604&text=mobile&time=,1w&key=3a101e334041565a185317693668407b"
 
 @interface RootViewController () <UITabBarDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSDictionary *allJSONDataDictionary;
 @property (strong, nonatomic) NSDictionary *resultDictionary;
+@property (strong, nonatomic) NSMutableArray *allMeetupDictionaryArray;
 @property (strong, nonatomic) NSMutableArray *allMeetupArray;
-
+@property (strong, nonatomic) Meetup *meetupChosen;
 
 @end
 
@@ -24,6 +26,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.allMeetupArray = [@[]mutableCopy]; // check this later if it crashes
+
     NSURL *url = [NSURL URLWithString:kURL];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
@@ -41,7 +45,13 @@
         else
         {
             self.allJSONDataDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            self.allMeetupArray = self.allJSONDataDictionary[@"results"]; // now allMeetupArray becomes an array of dictionary
+            self.allMeetupDictionaryArray = self.allJSONDataDictionary[@"results"]; // now allMeetupArray becomes an array of dictionary
+
+            for (int i = 0; i < self.allMeetupDictionaryArray.count; i++)
+            {
+                Meetup *meetup = [[Meetup alloc] initWithMeetupDictionary:self.allMeetupDictionaryArray[i]];
+                [self.allMeetupArray insertObject:meetup atIndex:i];
+            }
 
             [self.tableView reloadData];
         }
@@ -52,27 +62,27 @@
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    self.resultDictionary = self.allMeetupArray[indexPath.row];
+    self.meetupChosen = self.allMeetupArray[indexPath.row];
 
-//    NSDictionary *dGroupDictionary = self.resultDictionary[@"group"];
-    cell.textLabel.text = self.resultDictionary[@"name"];
-
-    NSDictionary *dVenueDictionary = self.resultDictionary[@"venue"];
-    cell.detailTextLabel.text = dVenueDictionary[@"address_1"];
+    cell.textLabel.text = self.meetupChosen.eventName;
+    cell.detailTextLabel.text = self.meetupChosen.fullAddress;
 
     return cell;
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.allMeetupArray.count;
+    return self.allMeetupDictionaryArray.count;
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void)prepareForSegue:(UIStoryboardSegue *)segue1 sender:(id)sender
 {
-    MeetupDetailViewController *meetupDetailVC = segue.destinationViewController;
-    meetupDetailVC.meetupDictionary = self.resultDictionary;
+    MeetupDetailViewController *meetupDetailVC = segue1.destinationViewController;
+//    meetupDetailVC.meetupDictionary = self.resultDictionary;
+    meetupDetailVC.meetupChosen = self.meetupChosen;
 }
+
+
 
 
 @end

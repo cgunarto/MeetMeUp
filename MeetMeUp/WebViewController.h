@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Meetup.h"
 
 @interface WebViewController : UIViewController
+
+@property (strong, nonatomic) Meetup *meetupChosen;
+
+@property (strong, nonatomic) NSDictionary* meetupDictionary;//delete this later
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @end

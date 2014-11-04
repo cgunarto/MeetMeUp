@@ -7,6 +7,7 @@
 //
 
 #import "MeetupDetailViewController.h"
+#import "WebViewController.h"
 
 @interface MeetupDetailViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *eventName;
@@ -25,19 +26,23 @@
 {
     [super viewDidLoad];
 
-    self.eventName.text = self.meetupDictionary[@"name"];
+    self.eventName.text = self.meetupChosen.eventName;
 
-    NSDictionary *dGroupDictionary = self.meetupDictionary[@"group"];
-    self.hostingGroupInfo.text = [NSString stringWithFormat:@"Hosting group info is %@", dGroupDictionary[@"name"]];
+    self.hostingGroupInfo.text = [NSString stringWithFormat:@"Hosting group info is %@", self.meetupChosen.groupName];
 
-    int RSVPYesCount = (int)self.meetupDictionary[@"yes_rsvp_count"];
-    self.RSVPCount.text = [NSString stringWithFormat:@"RSVP Count is %d",RSVPYesCount];
+    self.RSVPCount.text = [NSString stringWithFormat:@"RSVP Count is %d", (int)self.meetupChosen.yesRSVPCount];
 
-    [self.eventDescriptionWebView loadHTMLString:self.meetupDictionary[@"description"] baseURL:nil];
+    [self.eventDescriptionWebView loadHTMLString:self.meetupChosen.eventDescription baseURL:nil];
 
-    NSString *urlString = self.meetupDictionary[@"event_url"];
+    NSString *urlString = self.meetupChosen.urlString;
     [self.webLink setTitle:urlString forState:UIControlStateNormal];
 
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue2 sender:(id)sender
+{
+    WebViewController *webVC = segue2.destinationViewController;
+    webVC.meetupChosen = self.meetupChosen;
 }
 
 
