@@ -10,6 +10,7 @@
 #import "MeetupDetailViewController.h"
 #import "Meetup.h"
 #define kURL @"https://api.meetup.com/2/open_events.json?zip=60604&text=mobile&time=,1w&key=3a101e334041565a185317693668407b"
+#define kURLEnter @"https://api.meetup.com/2/open_events.json?zip=60604&text=%@&time=,1w&key=3a101e334041565a185317693668407b"
 
 @interface RootViewController () <UITabBarDelegate, UITableViewDataSource, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -69,7 +70,7 @@
     {
         NSString *enteredTopic = textField.text;
         NSString *lowercaseTopic = [enteredTopic lowercaseString];
-        NSString *formattedURLString = [NSString stringWithFormat:@"https://api.meetup.com/2/open_events?&sign=true&photo-host=public&topic=%@&zip=94705&key=3a101e334041565a185317693668407b", lowercaseTopic];
+        NSString *formattedURLString = [NSString stringWithFormat:@"https://api.meetup.com/2/open_events.json?zip=60604&text=%@&time=,1w&key=3a101e334041565a185317693668407b", lowercaseTopic];
         [self loadJSONData:formattedURLString];
     }
 
