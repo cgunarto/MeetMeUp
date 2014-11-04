@@ -24,6 +24,10 @@
 @property (strong, nonatomic) NSString *country;
 @property (strong, nonatomic) NSString *fullAddress;
 
+@property (strong, nonatomic) NSString *groupID;
+@property (strong, nonatomic) NSString *eventID;
+@property (strong, nonatomic) NSString *commentRequestURL;
+
 
 
 - (instancetype)initWithMeetupDictionary:(NSDictionary *) meetupDictionary;

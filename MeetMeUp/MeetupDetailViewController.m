@@ -28,9 +28,9 @@
 
     self.eventName.text = self.meetupChosen.eventName;
 
-    self.hostingGroupInfo.text = [NSString stringWithFormat:@"Hosting group info is %@", self.meetupChosen.groupName];
+    self.hostingGroupInfo.text = [NSString stringWithFormat:@"Group: %@", self.meetupChosen.groupName];
 
-    self.RSVPCount.text = [NSString stringWithFormat:@"RSVP Count is %d", (int)self.meetupChosen.yesRSVPCount];
+    self.RSVPCount.text = [NSString stringWithFormat:@"RSVP: %d", (int)self.meetupChosen.yesRSVPCount];
 
     [self.eventDescriptionWebView loadHTMLString:self.meetupChosen.eventDescription baseURL:nil];
 

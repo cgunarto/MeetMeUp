@@ -17,6 +17,7 @@
 
     NSDictionary *dGroupDictionary = meetupDictionary[@"group"];
     self.groupName = dGroupDictionary[@"name"];
+    self.groupID = dGroupDictionary[@"id"];
 
     self.yesRSVPCount = meetupDictionary[@"yes_rsvp_count"];
 
@@ -30,8 +31,13 @@
     self.country = self.venueDictionary[@"country"];
     self.fullAddress = [NSString stringWithFormat:@"%@, %@, %@",self.streetAddress, self.city, self.country];
 
+    self.eventID = meetupDictionary[@"id"];
+
+    self.commentRequestURL = [NSString stringWithFormat:@"https://api.meetup.com/2/event_comments?&sign=true&photo-host=public&group_id=%@&event_id=%@&key=3a101e334041565a185317693668407b",self.groupID, self.eventID];
+
     return self;
     
 }
 
 @end
+

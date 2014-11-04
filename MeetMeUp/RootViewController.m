@@ -10,7 +10,6 @@
 #import "MeetupDetailViewController.h"
 #import "Meetup.h"
 #define kURL @"https://api.meetup.com/2/open_events.json?zip=60604&text=mobile&time=,1w&key=3a101e334041565a185317693668407b"
-#define kURLEnter @"https://api.meetup.com/2/open_events.json?zip=60604&text=%@&time=,1w&key=3a101e334041565a185317693668407b"
 
 @interface RootViewController () <UITabBarDelegate, UITableViewDataSource, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -18,7 +17,6 @@
 @property (strong, nonatomic) NSDictionary *resultDictionary;
 @property (strong, nonatomic) NSMutableArray *allMeetupDictionaryArray;
 @property (strong, nonatomic) NSMutableArray *allMeetupArray;
-@property (strong, nonatomic) Meetup *meetupChosen;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 
 @end
@@ -35,10 +33,10 @@
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    self.meetupChosen = self.allMeetupArray[indexPath.row];
+    Meetup *meetup = self.allMeetupArray[indexPath.row];
 
-    cell.textLabel.text = self.meetupChosen.eventName;
-    cell.detailTextLabel.text = self.meetupChosen.fullAddress;
+    cell.textLabel.text = meetup.eventName;
+    cell.detailTextLabel.text = meetup.fullAddress;
 
     return cell;
 }
@@ -51,7 +49,9 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue1 sender:(id)sender
 {
     MeetupDetailViewController *meetupDetailVC = segue1.destinationViewController;
-    meetupDetailVC.meetupChosen = self.meetupChosen;
+    Meetup *meetupChosen = self.allMeetupArray[[self.tableView indexPathForSelectedRow].row];
+    meetupDetailVC.meetupChosen = meetupChosen;
+
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
