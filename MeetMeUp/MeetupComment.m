@@ -10,4 +10,14 @@
 
 @implementation MeetupComment
 
+- (instancetype)initWithCommentDictionary: (NSDictionary *)commentDictionary
+{
+    self = [super init];
+    self.memberName = commentDictionary[@"member_name"];
+    self.comment = commentDictionary[@"comment"];
+//    self.date = [NSDate dateWithTimeIntervalSinceNow: *(NSTimeInterval *)commentDictionary[@"time"]];
+    return self;
+}
+
 @end
+

@@ -10,4 +10,12 @@
 
 @interface MeetupComment : NSObject
 
+//@property NSDate *date;
+//[NSDate dateWithTimeIntervalSince1970:timestamp]
+@property NSString *memberName;
+@property NSString *comment;
+
+- (instancetype)initWithCommentDictionary: (NSDictionary *)commentDictionary;
+
+
 @end

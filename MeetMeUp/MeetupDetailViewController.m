@@ -8,6 +8,7 @@
 
 #import "MeetupDetailViewController.h"
 #import "WebViewController.h"
+#import "MeetupComment.h"
 
 @interface MeetupDetailViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *eventName;
@@ -15,6 +16,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *hostingGroupInfo;
 @property (weak, nonatomic) IBOutlet UIWebView *eventDescriptionWebView;
 @property (weak, nonatomic) IBOutlet UIButton *webLink;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (strong, nonatomic) NSDictionary *allJSONCommentDataDictionary;
+@property (strong, nonatomic) NSDictionary *resultDictionary;
+@property (strong, nonatomic) NSMutableArray *allCommentDictionaryArray;
+@property (strong, nonatomic) NSMutableArray *allCommentArray;
 
 
 
@@ -25,6 +32,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.allCommentArray = [@[]mutableCopy];
+    self.allCommentDictionaryArray =[@[]mutableCopy];
 
     self.eventName.text = self.meetupChosen.eventName;
 
@@ -37,6 +46,9 @@
     NSString *urlString = self.meetupChosen.urlString;
     [self.webLink setTitle:urlString forState:UIControlStateNormal];
 
+    [self loadJSONData: self.meetupChosen.commentRequestURL];
+
+
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue2 sender:(id)sender
@@ -47,13 +59,52 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return nil;
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"commentCell" forIndexPath:indexPath];
+    MeetupComment *comment = self.allCommentArray[indexPath.row];
+
+    cell.textLabel.text = comment.comment;
+    cell.detailTextLabel.text = comment.memberName;
+    return cell;
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return self.allCommentDictionaryArray.count;
 }
+
+
+- (void)loadJSONData:(NSString *)urlString
+{
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
+     {
+         if (connectionError)
+         {
+             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"CONNECTION ERROR" message:connectionError.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+
+             UIAlertAction *okButton = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+
+             [alert addAction:okButton];
+             [self presentViewController:alert animated:YES completion:nil]; // move this into its own method later
+         }
+
+         else
+         {
+             self.allJSONCommentDataDictionary= [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+             self.allCommentDictionaryArray = self.allJSONCommentDataDictionary[@"results"];
+
+             for (int i = 0; i < self.allCommentDictionaryArray.count; i++)
+             {
+                MeetupComment *meetupComment = [[MeetupComment alloc] initWithCommentDictionary:self.allCommentDictionaryArray[i]];
+                [self.allCommentArray insertObject:meetupComment atIndex:i];
+             }
+
+             [self.tableView reloadData];
+         }
+     }];
+}
+
 
 
 @end

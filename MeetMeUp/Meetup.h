@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MeetupComment.h"
 
 @interface Meetup : NSObject
 

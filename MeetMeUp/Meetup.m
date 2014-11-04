@@ -34,10 +34,9 @@
     self.eventID = meetupDictionary[@"id"];
 
     self.commentRequestURL = [NSString stringWithFormat:@"https://api.meetup.com/2/event_comments?&sign=true&photo-host=public&group_id=%@&event_id=%@&key=3a101e334041565a185317693668407b",self.groupID, self.eventID];
-
     return self;
     
 }
 
-@end
 
+@end
