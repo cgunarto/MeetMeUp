@@ -14,6 +14,8 @@
 //[NSDate dateWithTimeIntervalSince1970:timestamp]
 @property NSString *memberName;
 @property NSString *comment;
+@property NSString *memberID;
+@property NSString *memberProfileURL;
 
 - (instancetype)initWithCommentDictionary: (NSDictionary *)commentDictionary;
 

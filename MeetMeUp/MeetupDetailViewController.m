@@ -9,6 +9,8 @@
 #import "MeetupDetailViewController.h"
 #import "WebViewController.h"
 #import "MeetupComment.h"
+#import "CustomTableViewCell.h"
+#import "Profile.h"
 
 @interface MeetupDetailViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *eventName;
@@ -35,16 +37,20 @@
     self.allCommentArray = [@[]mutableCopy];
     self.allCommentDictionaryArray =[@[]mutableCopy];
 
+    self.title = self.meetupChosen.eventName;
+
     self.eventName.text = self.meetupChosen.eventName;
 
-    self.hostingGroupInfo.text = [NSString stringWithFormat:@"Group: %@", self.meetupChosen.groupName];
+    self.hostingGroupInfo.text = self.meetupChosen.groupName;
 
-    self.RSVPCount.text = [NSString stringWithFormat:@"RSVP: %d", (int)self.meetupChosen.yesRSVPCount];
+
+    self.RSVPCount.text = [NSString stringWithFormat:@"%d", (int)self.meetupChosen.yesRSVPCount];
+
 
     [self.eventDescriptionWebView loadHTMLString:self.meetupChosen.eventDescription baseURL:nil];
 
-    NSString *urlString = self.meetupChosen.urlString;
-    [self.webLink setTitle:urlString forState:UIControlStateNormal];
+//    NSString *urlString = self.meetupChosen.urlString;
+//    [self.webLink setTitle:urlString forState:UIControlStateNormal];
 
     [self loadJSONData: self.meetupChosen.commentRequestURL];
 
@@ -57,13 +63,14 @@
     webVC.meetupChosen = self.meetupChosen;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (CustomTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"commentCell" forIndexPath:indexPath];
+    CustomTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"commentCell" forIndexPath:indexPath];
     MeetupComment *comment = self.allCommentArray[indexPath.row];
 
-    cell.textLabel.text = comment.comment;
-    cell.detailTextLabel.text = comment.memberName;
+    cell.userName.text  = comment.memberName;
+    [cell.commentWebView loadHTMLString:comment.comment baseURL:nil];
+
     return cell;
 }
 

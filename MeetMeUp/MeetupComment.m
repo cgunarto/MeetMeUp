@@ -16,8 +16,11 @@
     self.memberName = commentDictionary[@"member_name"];
     self.comment = commentDictionary[@"comment"];
 //    self.date = [NSDate dateWithTimeIntervalSinceNow: *(NSTimeInterval *)commentDictionary[@"time"]];
+
+    self.memberID = commentDictionary[@"member_id"];
+    self.memberProfileURL = [NSString stringWithFormat:@"https://api.meetup.com/2/member/%@?&sign=true&photo-host=public&key=3a101e334041565a185317693668407b" ,self.memberID];
+
     return self;
 }
 
 @end
-
