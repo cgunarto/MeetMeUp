@@ -175,7 +175,7 @@
                                     <constraint firstAttribute="height" constant="171" id="WT5-Sj-4Sk"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="commentCell" rowHeight="86" id="K9q-f7-zdO" customClass="CustomTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="commentCell" rowHeight="86" id="K9q-f7-zdO" customClass="CustomTableViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="K9q-f7-zdO" id="2WP-Uj-Tdv">
@@ -198,7 +198,7 @@
                                                         <constraint firstAttribute="height" constant="55" id="k9x-s3-No4"/>
                                                     </constraints>
                                                 </imageView>
-                                                <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VJw-rr-wVx">
+                                                <webView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VJw-rr-wVx">
                                                     <rect key="frame" x="76" y="27" width="236" height="59"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -220,6 +220,7 @@
                                             <outlet property="commentWebView" destination="VJw-rr-wVx" id="DXA-8N-cCs"/>
                                             <outlet property="userImageView" destination="WqV-4B-d2q" id="6hG-am-o8Q"/>
                                             <outlet property="userName" destination="sZI-jg-iLn" id="yhM-pH-zZe"/>
+                                            <segue destination="iAw-VW-JoY" kind="push" identifier="segue3" id="xpS-AB-LVl"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -363,6 +364,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HmV-3g-Yto" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1625" y="355"/>
+        </scene>
+        <!--Profile View Controller-->
+        <scene sceneID="hK2-dm-Sxm">
+            <objects>
+                <viewController id="iAw-VW-JoY" customClass="ProfileViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="P7u-4U-PgB"/>
+                        <viewControllerLayoutGuide type="bottom" id="cXK-bp-9cB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="avz-ne-30I">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="bgq-MF-uE1"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cLs-ZD-kuf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1625" y="1075"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kCK-AZ-tJi">

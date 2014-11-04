@@ -23,12 +23,16 @@
 
 @implementation RootViewController
 
+#pragma mark View Controller Life Cycle
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.allMeetupArray = [@[]mutableCopy]; // check this later if it crashes
     [self loadJSONData:kURL];
 }
+
+#pragma mark Table View Delegate Method
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -54,6 +58,8 @@
 
 }
 
+#pragma mark TextField Delegate Method
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     if ([textField.text isEqualToString:@""])
@@ -77,6 +83,8 @@
     [textField resignFirstResponder];
     return YES;
 }
+
+#pragma mark Custom Method
 
 - (void)loadJSONData:(NSString *)urlString
 {

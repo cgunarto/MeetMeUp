@@ -31,6 +31,8 @@
 
 @implementation MeetupDetailViewController
 
+#pragma mark View Controller Life Cycle
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -38,30 +40,18 @@
     self.allCommentDictionaryArray =[@[]mutableCopy];
 
     self.title = self.meetupChosen.eventName;
-
     self.eventName.text = self.meetupChosen.eventName;
-
     self.hostingGroupInfo.text = self.meetupChosen.groupName;
-
-
     self.RSVPCount.text = [NSString stringWithFormat:@"%d", (int)self.meetupChosen.yesRSVPCount];
 
 
     [self.eventDescriptionWebView loadHTMLString:self.meetupChosen.eventDescription baseURL:nil];
-
-//    NSString *urlString = self.meetupChosen.urlString;
-//    [self.webLink setTitle:urlString forState:UIControlStateNormal];
-
     [self loadJSONData: self.meetupChosen.commentRequestURL];
 
 
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue2 sender:(id)sender
-{
-    WebViewController *webVC = segue2.destinationViewController;
-    webVC.meetupChosen = self.meetupChosen;
-}
+#pragma mark Table View Delegate Methods
 
 - (CustomTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -79,6 +69,7 @@
     return self.allCommentDictionaryArray.count;
 }
 
+#pragma mark Custom Methods
 
 - (void)loadJSONData:(NSString *)urlString
 {
@@ -110,6 +101,21 @@
              [self.tableView reloadData];
          }
      }];
+}
+
+#pragma mark Segue
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"segue2"])
+    {
+        WebViewController *webVC = segue.destinationViewController;
+        webVC.meetupChosen = self.meetupChosen;
+    }
+    else
+    {
+        // segue3 goes here
+    }
 }
 
 

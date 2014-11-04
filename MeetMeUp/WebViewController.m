@@ -17,6 +17,8 @@
 
 @implementation WebViewController
 
+#pragma mark View Controller Life Cycle
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -43,6 +45,8 @@
     [self.activityIndicator stopAnimating];
     [self setButtonState];
 }
+
+#pragma mark Button Presses and State
 
 - (IBAction)onBackButtonPressed:(UIButton *)sender
 {

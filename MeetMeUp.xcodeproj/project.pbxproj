@@ -20,6 +20,7 @@
 		4FBF99131A088D12008E3B28 /* MeetupComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF99121A088D12008E3B28 /* MeetupComment.m */; };
 		4FBF99161A08ABE2008E3B28 /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF99151A08ABE2008E3B28 /* CustomTableViewCell.m */; };
 		4FBF99191A08C20C008E3B28 /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF99181A08C20C008E3B28 /* Profile.m */; };
+		4FBF991C1A08C63D008E3B28 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF991B1A08C63D008E3B28 /* ProfileViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		4FBF99151A08ABE2008E3B28 /* CustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableViewCell.m; sourceTree = "<group>"; };
 		4FBF99171A08C20C008E3B28 /* Profile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Profile.h; sourceTree = "<group>"; };
 		4FBF99181A08C20C008E3B28 /* Profile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Profile.m; sourceTree = "<group>"; };
+		4FBF991A1A08C63D008E3B28 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		4FBF991B1A08C63D008E3B28 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +112,8 @@
 				4FBF99001A08325D008E3B28 /* MeetupDetailViewController.m */,
 				4FBF99021A08471D008E3B28 /* WebViewController.h */,
 				4FBF99031A08471D008E3B28 /* WebViewController.m */,
+				4FBF991A1A08C63D008E3B28 /* ProfileViewController.h */,
+				4FBF991B1A08C63D008E3B28 /* ProfileViewController.m */,
 				4FBF99081A084ECB008E3B28 /* Model */,
 				4FBF98E31A08285F008E3B28 /* Main.storyboard */,
 				4FBF98E61A08285F008E3B28 /* Images.xcassets */,
@@ -261,6 +266,7 @@
 				4FBF99131A088D12008E3B28 /* MeetupComment.m in Sources */,
 				4FBF99071A084EC5008E3B28 /* Meetup.m in Sources */,
 				4FBF99191A08C20C008E3B28 /* Profile.m in Sources */,
+				4FBF991C1A08C63D008E3B28 /* ProfileViewController.m in Sources */,
 				4FBF99041A08471D008E3B28 /* WebViewController.m in Sources */,
 				4FBF99011A08325D008E3B28 /* MeetupDetailViewController.m in Sources */,
 				4FBF98DF1A08285F008E3B28 /* AppDelegate.m in Sources */,
