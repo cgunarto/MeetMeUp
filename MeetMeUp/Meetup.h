@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MeetupComment.h"
 
 @interface Meetup : NSObject
 
@@ -27,8 +28,6 @@
 @property (strong, nonatomic) NSString *groupID;
 @property (strong, nonatomic) NSString *eventID;
 @property (strong, nonatomic) NSString *commentRequestURL;
-
-
 
 - (instancetype)initWithMeetupDictionary:(NSDictionary *) meetupDictionary;
 

@@ -9,7 +9,7 @@
 #import "MeetupDetailViewController.h"
 #import "WebViewController.h"
 
-@interface MeetupDetailViewController ()
+@interface MeetupDetailViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *eventName;
 @property (weak, nonatomic) IBOutlet UILabel *RSVPCount;
 @property (weak, nonatomic) IBOutlet UILabel *hostingGroupInfo;
@@ -45,7 +45,15 @@
     webVC.meetupChosen = self.meetupChosen;
 }
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return nil;
+}
 
+- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 0;
+}
 
 
 @end

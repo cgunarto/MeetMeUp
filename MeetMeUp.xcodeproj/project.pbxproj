@@ -17,6 +17,7 @@
 		4FBF99011A08325D008E3B28 /* MeetupDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF99001A08325D008E3B28 /* MeetupDetailViewController.m */; };
 		4FBF99041A08471D008E3B28 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF99031A08471D008E3B28 /* WebViewController.m */; };
 		4FBF99071A084EC5008E3B28 /* Meetup.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF99061A084EC5008E3B28 /* Meetup.m */; };
+		4FBF99131A088D12008E3B28 /* MeetupComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF99121A088D12008E3B28 /* MeetupComment.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,8 @@
 		4FBF99031A08471D008E3B28 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		4FBF99051A084EC5008E3B28 /* Meetup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Meetup.h; sourceTree = "<group>"; };
 		4FBF99061A084EC5008E3B28 /* Meetup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Meetup.m; sourceTree = "<group>"; };
+		4FBF99111A088D12008E3B28 /* MeetupComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeetupComment.h; sourceTree = "<group>"; };
+		4FBF99121A088D12008E3B28 /* MeetupComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeetupComment.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +141,8 @@
 			children = (
 				4FBF99051A084EC5008E3B28 /* Meetup.h */,
 				4FBF99061A084EC5008E3B28 /* Meetup.m */,
+				4FBF99111A088D12008E3B28 /* MeetupComment.h */,
+				4FBF99121A088D12008E3B28 /* MeetupComment.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -243,6 +248,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FBF98E21A08285F008E3B28 /* RootViewController.m in Sources */,
+				4FBF99131A088D12008E3B28 /* MeetupComment.m in Sources */,
 				4FBF99071A084EC5008E3B28 /* Meetup.m in Sources */,
 				4FBF99041A08471D008E3B28 /* WebViewController.m in Sources */,
 				4FBF99011A08325D008E3B28 /* MeetupDetailViewController.m in Sources */,
@@ -438,6 +444,7 @@
 				4FBF98FB1A08285F008E3B28 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4FBF98FC1A08285F008E3B28 /* Build configuration list for PBXNativeTarget "MeetMeUpTests" */ = {
 			isa = XCConfigurationList;
@@ -446,6 +453,7 @@
 				4FBF98FE1A08285F008E3B28 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
