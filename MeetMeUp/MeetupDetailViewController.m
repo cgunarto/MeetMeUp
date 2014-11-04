@@ -61,6 +61,36 @@
     cell.userName.text  = comment.memberName;
     [cell.commentWebView loadHTMLString:comment.comment baseURL:nil];
 
+    //NEED TO DEBUG THIS
+    NSURL *url = [NSURL URLWithString:comment.memberProfileURL];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
+     {
+         if (connectionError)
+         {
+             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"CONNECTION ERROR" message:connectionError.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+
+             UIAlertAction *okButton = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+
+             [alert addAction:okButton];
+             [self presentViewController:alert animated:YES completion:nil]; // move this into its own method later
+         }
+
+         else
+         {
+             NSDictionary *JSONDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+             Profile *profile = [[Profile alloc]initWithProfileDictionary:JSONDictionary];
+
+             NSURL *imageURL = [NSURL URLWithString:profile.thumbnailLink];
+             NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+
+             cell.userImageView.image = [UIImage imageWithData:imageData];
+
+             [self.tableView reloadData];
+         }
+     }];
+    //NEED TO DEBUG THIS ABOVE
+
     return cell;
 }
 

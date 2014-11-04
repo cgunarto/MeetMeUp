@@ -15,4 +15,7 @@
 @property (nonatomic, strong) NSString *thumbnailLink;
 @property (nonatomic, strong) NSString *photoLink;
 
+- (instancetype)initWithProfileDictionary: (NSDictionary *)profileDictionary;
+
+
 @end
