@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MeetupComment.h"
 
 @interface ProfileViewController : UIViewController
+@property (strong, nonatomic) MeetupComment *meetupComment;
 
 @end

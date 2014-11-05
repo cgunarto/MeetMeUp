@@ -8,6 +8,7 @@
 
 #import "MeetupDetailViewController.h"
 #import "WebViewController.h"
+#import "ProfileViewController.h"
 #import "MeetupComment.h"
 #import "CustomTableViewCell.h"
 #import "Profile.h"
@@ -156,9 +157,11 @@
         WebViewController *webVC = segue.destinationViewController;
         webVC.meetupChosen = self.meetupChosen;
     }
-    else
+    else if ([segue.identifier isEqualToString:@"segue3"])
     {
-        // segue3 goes here
+        ProfileViewController *profileVC = segue.destinationViewController;
+        MeetupComment *meetupCommentChosen = self.allCommentArray[[self.tableView indexPathForSelectedRow].row];
+        profileVC.meetupComment = (MeetupComment *) meetupCommentChosen;
     }
 }
 

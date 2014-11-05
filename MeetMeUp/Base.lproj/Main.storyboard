@@ -384,19 +384,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U09-dV-1WD">
-                                <rect key="frame" x="85" y="88" width="150" height="150"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="U09-dV-1WD">
+                                <rect key="frame" x="66" y="72" width="189" height="189"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="189" id="4pV-9e-Asr"/>
+                                    <constraint firstAttribute="width" constant="189" id="INR-dP-W6d"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3LA-i5-3tm">
-                                <rect key="frame" x="139" y="265" width="46" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3LA-i5-3tm">
+                                <rect key="frame" x="66" y="269" width="189" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Du0-hf-fTj"/>
+                                    <constraint firstAttribute="width" constant="189" id="Lyx-3C-BeW"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3LA-i5-3tm" firstAttribute="top" secondItem="U09-dV-1WD" secondAttribute="bottom" constant="8" id="1sx-0c-nw4"/>
+                            <constraint firstAttribute="centerX" secondItem="3LA-i5-3tm" secondAttribute="centerX" id="CWh-If-Yhe"/>
+                            <constraint firstItem="U09-dV-1WD" firstAttribute="top" secondItem="P7u-4U-PgB" secondAttribute="bottom" constant="8" id="SDr-0S-uls"/>
+                            <constraint firstAttribute="centerX" secondItem="U09-dV-1WD" secondAttribute="centerX" id="jXr-px-Quu"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="bgq-MF-uE1"/>
+                    <connections>
+                        <outlet property="imageView" destination="U09-dV-1WD" id="5gf-OE-4iu"/>
+                        <outlet property="userNameLabel" destination="3LA-i5-3tm" id="dEG-ZB-KKS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cLs-ZD-kuf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
